@@ -1,7 +1,14 @@
 package com.dajingzhu.bean;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int location_id;
 	private int data_length;
 	private int data_number;
 	private double north_latitude;
@@ -17,6 +24,13 @@ public class Location {
 	private String state;
 	private int battery_voltage;
 	private int battery_level;
+	
+	public int getLocation_id() {
+		return location_id;
+	}
+	public void setLocation_id(int location_id) {
+		this.location_id = location_id;
+	}
 	public int getData_length() {
 		return data_length;
 	}
@@ -109,8 +123,8 @@ public class Location {
 	}
 	@Override
 	public String toString() {
-		return "Location [data_length=" + data_length + ", data_number=" + data_number + ", north_latitude="
-				+ north_latitude + ", east_longitude=" + east_longitude + ", version=" + version
+		return "Location [location_id=" + location_id + ", data_length=" + data_length + ", data_number=" + data_number
+				+ ", north_latitude=" + north_latitude + ", east_longitude=" + east_longitude + ", version=" + version
 				+ ", transmission_speed=" + transmission_speed + ", safety_helmet_angle=" + safety_helmet_angle
 				+ ", satellite_number=" + satellite_number + ", level_factor=" + level_factor + ", transmission_time="
 				+ transmission_time + ", signal_intensity=" + signal_intensity + ", alarm_value=" + alarm_value

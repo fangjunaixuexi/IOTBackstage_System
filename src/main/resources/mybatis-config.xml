@@ -4,10 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-<!-- 起别名 -->
+	<!-- 起别名 -->
 	<typeAliases>
+		<typeAlias type="com.dajingzhu.bean.Location" alias="Location" />
+		<typeAlias type="com.dajingzhu.bean.Environmental_monitoring"
+			alias="Environmental_monitoring" />
+		<typeAlias type="com.dajingzhu.bean.vo.PageBean" alias="PageBean" />
+		<typeAlias type="com.dajingzhu.bean.Equipment" alias="Equipment" />
+		<typeAlias type="com.dajingzhu.bean.Safety_hat" alias="Safety_hat" />
+		<typeAlias type="com.dajingzhu.bean.User" alias="User" />
+		<typeAlias type="com.dajingzhu.bean.Logindate" alias="Logindate" />
+		<typeAlias type="com.dajingzhu.bean.Construction_site" alias="Construction_site" />
+		
+			<typeAlias type="com.dajingzhu.bean.Video_monitor" alias="Video_monitor" />
+	
+	</typeAliases>
 
-	</typeAliases> 
- 
 </configuration>
  

@@ -2,6 +2,202 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.dajingzhu.mapper.IOTMapper">
+<mapper namespace="com.dajingzhu.mapper.IOTMapper">
 
- </mapper>
+	<select id="selectHatLocation" resultType="Location">
+		select * from location
+	</select>
+
+	<select id="selectEnvironmental_monitoring" resultType="Environmental_monitoring">
+		select *
+		from environmental_monitoring
+	</select>
+
+	<select id="selectEquipment" resultType="Equipment">
+		select * from equipment
+	</select>
+
+	<select id="selectSafetyHat" resultType="Safety_Hat">
+		select * from safety_hat
+	</select>
+
+	<insert id="insertSafety_hat" parameterType="Safety_Hat">
+		insert into
+		safety_hat(hat_number,hat_name,c_id)
+		values(#{hat_number},#{hat_name},#{c_id})
+	</insert>
+
+	<delete id="deleteSafetyHat" parameterType="Safety_Hat">
+		delete from
+		safety_hat where hat_id=#{hat_id}
+	</delete>
+
+	<select id="selectOneSafetyHat" parameterType="Safety_Hat"
+		resultType="Safety_Hat">
+		select * from safety_hat where hat_id=#{hat_id}
+	</select>
+
+	<update id="updateSafetyHat" parameterType="Safety_Hat">
+		update safety_hat set
+		hat_number=#{hat_number},hat_name=#{hat_name},c_id=#{c_id}
+		where
+		hat_id=#{hat_id}
+	</update>
+
+	<insert id="insertEquipment" parameterType="Equipment">
+		insert into
+		equipment(enviromental_id,serial_number,c_id)
+		values(#{enviromental_id},#{serial_number},#{c_id})
+	</insert>
+
+	<delete id="deleteEquipment" parameterType="Equipment">
+		delete from equipment
+		where id=#{id}
+	</delete>
+
+	<select id="selectOneEquipment" parameterType="Equipment"
+		resultType="Equipment">
+		select * from equipment where id=#{id}
+	</select>
+
+	<update id="updateEquipment" parameterType="Equipment">
+		update equipment set
+		enviromental_id=#{enviromental_id},serial_number=#{serial_number},c_id=#{c_id}
+		where id=#{id}
+	</update>
+
+	<select id="findUser" parameterType="User" resultType="User">
+		select *
+		from user where username=#{username} and
+		userpassword=#{userpassword}
+	</select>
+
+	<insert id="insertLogindate" parameterType="Logindate">
+		insert into
+		logindate(username,logintime) values(#{username},#{logintime})
+	</insert>
+
+	<select id="selectCountUser" resultType="Integer">
+		select count(user_id)
+		from user
+	</select>
+
+	<select id="selectCountSafety_hat" resultType="Integer">
+		select
+		count(hat_id) from safety_hat
+	</select>
+
+	<select id="selectCountEquipment" resultType="Integer">
+		select count(id)
+		from equipment
+	</select>
+
+	<select id="selectCountLogindate" resultType="Integer">
+		select
+		count(login_id) from logindate
+	</select>
+
+	<select id="selectListUser" resultType="User">
+		select * from user
+	</select>
+
+	<!-- 获得分页department的数据 -->
+	<select id="findDepartPageData" parameterType="PageBean"
+		resultType="User">
+		select * from user order by power_id limit
+		#{offset},#{currentCount}
+	</select>
+
+	<update id="updateUserInformation" parameterType="User">
+		update user set
+		username=#{username},userpassword=#{userpassword},sex=#{sex},email=#{email},address=#{address}
+		where user_id=#{user_id}
+	</update>
+
+	<select id="selectLoginDate" resultType="Logindate">
+		select * from logindate
+		order by logintime desc
+	</select>
+
+	<delete id="deleteLogindate">
+		delete from logindate
+	</delete>
+	<select id="findEnvironmental_monitoring" parameterType="PageBean"
+		resultType="Environmental_monitoring">
+		select * from environmental_monitoring order by sendtime
+		limit #{offset},#{currentCount}
+	</select>
+
+	<select id="selectCountEnvironmental_monitoring" resultType="Integer">
+		select count(id)
+		from environmental_monitoring
+	</select>
+
+	<select id="selectCountLocation" resultType="Integer">
+		select
+		count(location_id)
+		from location
+	</select>
+
+	<select id="findLocation" parameterType="PageBean" resultType="Location">
+		select * from location order by transmission_time
+		limit
+		#{offset},#{currentCount}
+	</select>
+
+	<select id="selectConstruction_site" resultType="Construction_site">
+		select *
+		from
+		construction_site
+	</select>
+
+	<select id="selectOneUser" parameterType="User" resultType="User">
+		select * from user where user_id=#{user_id}
+	</select>
+
+	<insert id="insertUser" parameterType="User">
+		insert into
+		user(username,userpassword,power_id,sex,email,address)
+		values(#{username},#{userpassword},#{power_id},#{sex},#{email},#{address})
+	</insert>
+
+	<delete id="deleteUser" parameterType="User">
+		delete from user where
+		user_id=#{user_id}
+	</delete>
+
+	<select id="selectVideo_monitor" resultType="Video_monitor">
+		select * from
+		video_monitor
+	</select>
+
+	<insert id="insertVideo_monitor" parameterType="Video_monitor">
+		insert into
+		video_monitor(ip,port,vuser_name,vpassword,c_id) values
+		(#{ip},#{port},#{vuser_name},#{vpassword},#{c_id})
+	</insert>
+
+	<delete id="deleteVideo_monitor" parameterType="Video_monitor">
+		delete from
+		video_monitor where v_id=#{v_id}
+	</delete>
+
+	<select id="selectOneVideo_monitor" parameterType="Video_monitor"
+		resultType="Video_monitor">
+		select * from video_monitor where v_id=#{v_id}
+	</select>
+
+	<select id="selectOneConstruction_site" parameterType="java.lang.Integer"
+		resultType="Construction_site">
+		select *
+		from
+		construction_site where c_id=#{c_id}
+	</select>
+
+	<update id="updateVideo_monitor" parameterType="Video_monitor">
+		update	video_monitor set
+		ip=#{ip},port=#{port},vuser_name=#{vuser_name},vpassword=#{vpassword},c_id=#{c_id}
+		where v_id=#{v_id}
+	</update>
+
+</mapper>

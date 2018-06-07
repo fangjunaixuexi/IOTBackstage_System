@@ -1,6 +1,12 @@
 package com.dajingzhu.bean;
 
-public class Environmental_monitoring {
+import java.io.Serializable;
+
+public class Environmental_monitoring implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private int enviromental_id;
 	private double temperature;
