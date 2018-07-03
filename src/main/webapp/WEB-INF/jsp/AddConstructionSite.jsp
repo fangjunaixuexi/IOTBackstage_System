@@ -17,6 +17,7 @@
 	rel="stylesheet" media="screen">
 <script
 	src="${pageContext.request.contextPath }/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
 </head>
 
 <body>
@@ -27,10 +28,10 @@
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="#">智慧工地</a>
-				<div class="nav-collapse collapse">
+			<div class="nav-collapse collapse">
 				<c:choose>
 				<c:when test="${userSession == null }">
-					<ul class="nav pull-right">
+						<ul class="nav pull-right">
 						<li class="dropdown"><a href="${pageContext.request.contextPath }/user/tologin" role="button">
 						 未登录</a>
 						 </li>
@@ -53,60 +54,15 @@
 					</ul>
 					</c:otherwise>
 					</c:choose>
-						<!--<ul class="nav">
-						<li class="active"><a href="#">首页</a></li>
-				 	<li class="dropdown"><a href="#" data-toggle="dropdown"
-							class="dropdown-toggle">设置 <b class="caret"></b>
-
-						</a>
-							<ul class="dropdown-menu" id="menu1">
-								<li><a href="#">工具 <i class="icon-arrow-right"></i>
-
-								</a>
-									<ul class="dropdown-menu sub-menu">
-										<li><a href="#">报表</a></li>
-										<li><a href="#">日志</a></li>
-										<li><a href="#">错误</a></li>
-									</ul></li>
-								<li><a href="#">SEO设置</a></li>
-								<li><a href="#">其他链接</a></li>
-								<li class="divider"></li>
-								<li><a href="#">其他链接</a></li>
-								<li><a href="#">其他链接</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" role="button"
-							class="dropdown-toggle" data-toggle="dropdown">内容 <i
-								class="caret"></i>
-
-						</a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">博客</a></li>
-								<li><a tabindex="-1" href="#">新闻</a></li>
-								<li><a tabindex="-1" href="#">定制页面</a></li>
-								<li><a tabindex="-1" href="#">日历</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="#">答疑</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" role="button"
-							class="dropdown-toggle" data-toggle="dropdown">用户 <i
-								class="caret"></i>
-
-						</a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1" href="#">用户列表</a></li>
-								<li><a tabindex="-1" href="#">搜索</a></li>
-								<li><a tabindex="-1" href="#">权限</a></li>
-							</ul></li>
-					</ul> -->
-				</div>
+					</div>
 				<!--/.nav-collapse -->
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid">
+<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span2" id="sidebar">
-				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+					<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li class="active"><a
 						href="${pageContext.request.contextPath }/user/toindex"><i
 							class="icon-chevron-right"></i> 首页</a></li>
@@ -152,7 +108,7 @@
 							class="icon-chevron-right"></i> 塔机设备</a></li>
 						</ul>
 					</li>
-						<li class="dropdown">
+					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">区域管理<span class="caret" ></span></a>
 						<ul class="dropdown-menu">
@@ -180,115 +136,56 @@
 								<li><a
 									href="${pageContext.request.contextPath }/user/toindex">首页</a>
 									<span class="divider">/</span></li>
-								<li><a href="#">个人资料</a> <span class="divider">/</span></li>
-
+								<li><a
+									href="${pageContext.request.contextPath }/user/toConstructionSite">工地管理</a>
+									<span class="divider">/</span></li>
+								<li><a href="#">添加工地</a> <span class="divider">/</span>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- block -->
 				<div class="block">
 					<div class="navbar navbar-inner block-header">
-						<div class="muted pull-left">用户数据</div>
+						<div class="muted pull-left">添加数据</div>
 					</div>
 					<div class="block-content collapse in">
 						<div class="span12">
 							<form class="form-horizontal"
-								action="${pageContext.request.contextPath }/user/toupdateUser"
-								method="post" accept-charset="UTF-8">
+								action="${pageContext.request.contextPath }/user/toinsertConstructionSite"
+								method="post" accept-charset="UTF-8" onsubmit="return check()">
 								<fieldset>
-									<legend>个人信息</legend>
+									<legend>添加工地</legend>
 									<div class="control-group">
 										<label class="control-label" for="focusedInput"
-											style="text-align: center;">用户编号</label>
+											style="text-align: center;">工地编号</label>
+
 										<div class="controls">
-											<input class="input-xlarge focused" name="user_id"
-												id="user_id" type="text" value="${userSession.user_id }"
-												readonly="readonly"> <span class="help-inline">*</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label" for="focusedInput"
-											style="text-align: center;">用户名</label>
-										<div class="controls">
-											<input class="input-xlarge focused" name="username"
-												id="username" type="text" value="${userSession.username}">
-											<span class="help-inline">*</span>
+											<input class="input-xlarge focused" name="regionid"
+												id="regionid" type="text"> <span
+												class="help-inline">*</span> <span id="checktext1"></span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="inputError">用户密码</label>
+										<label class="control-label" for="inputError">工地名称</label>
 										<div class="controls">
-											<input type="text" name="userpassword" id="userpassword"
-												value="${userSession.userpassword }"> <span
+											<input type="text" name="regionname" value="null"> <span
 												class="help-inline">-</span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="inputError">用户邮箱</label>
+										<label class="control-label" for="selectError">工地所属</label>
 										<div class="controls">
-											<input type="text" name="email" id="email"
-												value="${userSession.email }"> <span
-												class="help-inline">-</span>
-										</div>
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="selectError">用户性别</label>
-										<div class="controls">
-											<select name="sex" id="sex">
-											<c:if test="${userSession.sex==0}">
-												<option selected="selected" value="0">
-												女
-												</option>
-											</c:if> 
-											<c:if test="${userSession.sex==1}">
-												<option selected="selected" value="1">
-													男
-												</option>
-											</c:if> 
-												<option value="1">男
-												</option>
-												<option value="0">女</option>
-												<!-- 
-												<option >1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												 -->
-											</select>
-										</div>
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="inputError">用户地址</label>
-										<div class="controls">
-											<input type="text" name="address" id="address"
-												value="${userSession.address }"> <span
-												class="help-inline">-</span>
-										</div>
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="selectError">设备等级</label>
-										<div class="controls">
-											<select name="power_id" id="power_id">
-												<option selected="selected">${userSession.power_id }</option>
-												<!-- 
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
-												<option>7</option>
-												 -->
+											<select name="father">
+												<c:forEach items="${listRegionAdministrationSession }"
+													var="admin">
+													<option value="${admin.regionid}">${admin.regionname}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
 									<div class="form-actions">
-										<button type="submit" class="btn btn-primary">Save
-											changes</button>
+										<button type="submit" class="btn btn-primary">Add</button>
 										<button type="reset" class="btn">Cancel</button>
 									</div>
 								</fieldset>
@@ -299,8 +196,6 @@
 				</div>
 				<!-- /block -->
 			</div>
-
-
 		</div>
 	</div>
 	<hr>
@@ -343,40 +238,57 @@
 
 
 	<script src="${pageContext.request.contextPath }/assets/scripts.js"></script>
-	<script>
-		$(function() {
-			$(".datepicker").datepicker();
-			$(".uniform_on").uniform();
-			$(".chzn-select").chosen();
-			$('.textarea').wysihtml5();
+	<!-- <script>
+        $(function() {
+            $(".datepicker").datepicker();
+            $(".uniform_on").uniform();
+            $(".chzn-select").chosen();
+            $('.textarea').wysihtml5();
 
-			$('#rootwizard').bootstrapWizard(
-					{
-						onTabShow : function(tab, navigation, index) {
-							var $total = navigation.find('li').length;
-							var $current = index + 1;
-							var $percent = ($current / $total) * 100;
-							$('#rootwizard').find('.bar').css({
-								width : $percent + '%'
-							});
-							// If it's the last tab then hide the last button and show the finish instead
-							if ($current >= $total) {
-								$('#rootwizard').find('.pager .next').hide();
-								$('#rootwizard').find('.pager .finish').show();
-								$('#rootwizard').find('.pager .finish')
-										.removeClass('disabled');
-							} else {
-								$('#rootwizard').find('.pager .next').show();
-								$('#rootwizard').find('.pager .finish').hide();
-							}
-						}
-					});
-			$('#rootwizard .finish').click(function() {
-				alert('Finished!, Starting over!');
-				$('#rootwizard').find("a[href*='tab1']").trigger('click');
-			});
-		});
-	</script>
+            $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index+1;
+                var $percent = ($current/$total) * 100;
+                $('#rootwizard').find('.bar').css({width:$percent+'%'});
+                // If it's the last tab then hide the last button and show the finish instead
+                if($current >= $total) {
+                    $('#rootwizard').find('.pager .next').hide();
+                    $('#rootwizard').find('.pager .finish').show();
+                    $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                } else {
+                    $('#rootwizard').find('.pager .next').show();
+                    $('#rootwizard').find('.pager .finish').hide();
+                }
+            }});
+            $('#rootwizard .finish').click(function() {
+                alert('Finished!, Starting over!');
+                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+            });
+        });
+        </script> -->
+	<script type="text/javascript">  
+function check() {  
+	var reg = /^\d+$/;
+    var check = false;  
+    var flag=null;
+    var regionid = document.getElementById("regionid").value;  
+    if (regionid==""||regionid==null) {  
+        document.getElementById("checktext1").innerHTML = "设备编号不能为空 ";  
+        check = false;  
+       
+    } else {
+    	 flag=reg.test(regionid);
+         if(!flag){
+         	 document.getElementById("checktext1").innerHTML = "设备编号只能为数字";
+         	check=false;
+         }else{
+        document.getElementById("checktext1").innerHTML = " √";  
+        check = true;  
+    }  
+    }
+    return check;  
+}  
+</script>
 </body>
 
 </html>

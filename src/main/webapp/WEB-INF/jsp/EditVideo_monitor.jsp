@@ -28,22 +28,31 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="#">智慧工地</a>
 				<div class="nav-collapse collapse">
+				<c:choose>
+				<c:when test="${userSession == null }">
+						<ul class="nav pull-right">
+						<li class="dropdown"><a href="${pageContext.request.contextPath }/user/tologin" role="button">
+						 未登录</a>
+						 </li>
+						 </ul>
+				</c:when>
+				<c:otherwise>
 					<ul class="nav pull-right">
 						<li class="dropdown"><a href="#" role="button"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="icon-user"></i>管理员<i class="caret"></i>
+								class="icon-user"></i>个人<i class="caret"></i>
 
 						</a>
 							<ul class="dropdown-menu">
 								<li><a tabindex="-1"
-									href="${pageContext.request.contextPath }/user/touserinformation">个人资料</a>
-								</li>
+									href="${pageContext.request.contextPath }/user/touserinformation">个人资料</a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1"
-									href="${pageContext.request.contextPath }/user/tologin">退出</a>
-								</li>
+									href="${pageContext.request.contextPath }/user/tologin">退出</a></li>
 							</ul></li>
 					</ul>
+					</c:otherwise>
+					</c:choose>
 					<!--   <ul class="nav">
                             <li class="active">
                                 <a href="#">首页</a>
@@ -169,6 +178,24 @@
 							class="icon-chevron-right"></i> 视频监控设备</a></li>
 						</ul>
 					</li>
+						<li class="dropdown">
+						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">塔机<span class="caret" ></span></a>
+						<ul class="dropdown-menu">
+							<li><a
+						href="${pageContext.request.contextPath }/user/toTowerCrane"><i
+							class="icon-chevron-right"></i> 塔机设备</a></li>
+						</ul>
+					</li>
+						<li class="dropdown">
+						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">区域管理<span class="caret" ></span></a>
+						<ul class="dropdown-menu">
+							<li><a
+						href="${pageContext.request.contextPath }/user/toConstructionSite"><i
+							class="icon-chevron-right"></i>工地管理</a></li>
+						</ul>
+					</li>
 					<li><a 
 						href="${pageContext.request.contextPath }/user/toLogindate"><span
 							class="badge badge-warning pull-right">${countlogindate}</span>登录日志</a></li>
@@ -250,12 +277,12 @@
 									<div class="control-group success">
 										<label class="control-label" for="selectError">视频所属工地</label>
 										<div class="controls">
-											<select name="c_id">
+											<select name="regionid">
 											
-												<option value="${oneConstruction_siteSession.c_id}" selected="selected">${oneConstruction_siteSession.c_name}</option>
+												<option value="${Onevideo_monitorSession.regionid}" selected="selected">${Onevideo_monitorSession.belong}</option>
 												<c:forEach items="${construction_siteSession }"
 													var="construction_site">
-													<option value="${construction_site.c_id}">${construction_site.c_name}</option>
+													<option value="${construction_site.regionid}">${construction_site.regionname}</option>
 												</c:forEach>
 											</select>
 										</div>

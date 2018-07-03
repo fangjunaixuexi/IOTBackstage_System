@@ -3,7 +3,7 @@ package com.dajingzhu.bean;
 public class Video_monitor {
 	private int v_id;
 	private int port;
-	private int c_id;
+	private String regionid;
 	private String ip;
 	private String vuser_name;
 	private String vpassword;
@@ -26,11 +26,13 @@ public class Video_monitor {
 	public void setPort(int port) {
 		this.port = port;
 	}
-	public int getC_id() {
-		return c_id;
+
+
+	public String getRegionid() {
+		return regionid;
 	}
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
+	public void setRegionid(String regionid) {
+		this.regionid = regionid;
 	}
 	public String getIp() {
 		return ip;
@@ -52,8 +54,9 @@ public class Video_monitor {
 	}
 	@Override
 	public String toString() {
-		return "Video_monitor [v_id=" + v_id + ", port=" + port + ", c_id=" + c_id + ", ip=" + ip + ", vuser_name="
-				+ vuser_name + ", vpassword=" + vpassword + "]";
+		return "Video_monitor [v_id=" + v_id + ", port=" + port + ", regionid=" + regionid + ", ip=" + ip
+				+ ", vuser_name=" + vuser_name + ", vpassword=" + vpassword + ", belong=" + belong + "]";
 	}
+	
 	
 }

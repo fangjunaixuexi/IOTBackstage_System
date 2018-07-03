@@ -11,13 +11,21 @@ public class Equipment implements Serializable {
 	private int enviromental_id;
 	private String serial_number;
 	private String belong;
-	private int c_id;
+	private String regionid;
+	private String equipment_name;
 	
-	public int getC_id() {
-		return c_id;
+	public String getEquipment_name() {
+		return equipment_name;
 	}
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
+	public void setEquipment_name(String equipment_name) {
+		this.equipment_name = equipment_name;
+	}
+
+	public String getRegionid() {
+		return regionid;
+	}
+	public void setRegionid(String regionid) {
+		this.regionid = regionid;
 	}
 	public String getBelong() {
 		return belong;
@@ -47,7 +55,8 @@ public class Equipment implements Serializable {
 	@Override
 	public String toString() {
 		return "Equipment [id=" + id + ", enviromental_id=" + enviromental_id + ", serial_number=" + serial_number
-				+ ", belong=" + belong + "]";
+				+ ", belong=" + belong + ", regionid=" + regionid + ", equipment_name=" + equipment_name + "]";
 	}
+
 	
 }

@@ -23,8 +23,8 @@
 
 	<insert id="insertSafety_hat" parameterType="Safety_Hat">
 		insert into
-		safety_hat(hat_number,hat_name,c_id)
-		values(#{hat_number},#{hat_name},#{c_id})
+		safety_hat(hat_number,hat_name,regionid,belong,workman_id,workman_name,groupingnumber,groupingname)
+		values(#{hat_number},#{hat_name},#{regionid},#{belong},#{workman_id},#{workman_name},#{groupingnumber},#{groupingname})
 	</insert>
 
 	<delete id="deleteSafetyHat" parameterType="Safety_Hat">
@@ -39,15 +39,15 @@
 
 	<update id="updateSafetyHat" parameterType="Safety_Hat">
 		update safety_hat set
-		hat_number=#{hat_number},hat_name=#{hat_name},c_id=#{c_id}
-		where
+		hat_number=#{hat_number},hat_name=#{hat_name},regionid=#{regionid},belong=#{belong},workman_id=#{workman_id},workman_name=#{workman_name}
+		,groupingnumber=#{groupingnumber},groupingname=#{groupingname} where
 		hat_id=#{hat_id}
 	</update>
 
 	<insert id="insertEquipment" parameterType="Equipment">
 		insert into
-		equipment(enviromental_id,serial_number,c_id)
-		values(#{enviromental_id},#{serial_number},#{c_id})
+		equipment(enviromental_id,serial_number,regionid,belong,equipment_name)
+		values(#{enviromental_id},#{serial_number},#{regionid},#{belong},#{equipment_name})
 	</insert>
 
 	<delete id="deleteEquipment" parameterType="Equipment">
@@ -62,7 +62,7 @@
 
 	<update id="updateEquipment" parameterType="Equipment">
 		update equipment set
-		enviromental_id=#{enviromental_id},serial_number=#{serial_number},c_id=#{c_id}
+		enviromental_id=#{enviromental_id},serial_number=#{serial_number},regionid=#{regionid},belong=#{belong},equipment_name=#{equipment_name}
 		where id=#{id}
 	</update>
 
@@ -110,7 +110,7 @@
 
 	<update id="updateUserInformation" parameterType="User">
 		update user set
-		username=#{username},userpassword=#{userpassword},sex=#{sex},email=#{email},address=#{address}
+		username=#{username},userpassword=#{userpassword},sex=#{sex},email=#{email},address=#{address},power_id=#{power_id}
 		where user_id=#{user_id}
 	</update>
 
@@ -145,7 +145,7 @@
 		#{offset},#{currentCount}
 	</select>
 
-	<select id="selectConstruction_site" resultType="Construction_site">
+	<select id="selectConstruction_site" resultType="ConstructionSite">
 		select *
 		from
 		construction_site
@@ -173,8 +173,8 @@
 
 	<insert id="insertVideo_monitor" parameterType="Video_monitor">
 		insert into
-		video_monitor(ip,port,vuser_name,vpassword,c_id) values
-		(#{ip},#{port},#{vuser_name},#{vpassword},#{c_id})
+		video_monitor(ip,port,vuser_name,vpassword,regionid,belong) values
+		(#{ip},#{port},#{vuser_name},#{vpassword},#{regionid},#{belong})
 	</insert>
 
 	<delete id="deleteVideo_monitor" parameterType="Video_monitor">
@@ -187,17 +187,105 @@
 		select * from video_monitor where v_id=#{v_id}
 	</select>
 
-	<select id="selectOneConstruction_site" parameterType="java.lang.Integer"
-		resultType="Construction_site">
+	<select id="selectOneConstruction_site" parameterType="java.lang.String"
+		resultType="ConstructionSite">
 		select *
 		from
-		construction_site where c_id=#{c_id}
+		construction_site where regionid=#{regionid}
 	</select>
 
 	<update id="updateVideo_monitor" parameterType="Video_monitor">
-		update	video_monitor set
-		ip=#{ip},port=#{port},vuser_name=#{vuser_name},vpassword=#{vpassword},c_id=#{c_id}
+		update
+		video_monitor set
+		ip=#{ip},port=#{port},vuser_name=#{vuser_name},vpassword=#{vpassword},regionid=#{regionid},belong=#{belong}
 		where v_id=#{v_id}
 	</update>
 
+	<select id="selectWorkman" resultType="Workman">
+		select * from workman
+	</select>
+
+	<select id="selectOneWorkman" parameterType="Integer"
+		resultType="String">
+		select workman_name from workman where
+		workman_id=#{workman_id}
+	</select>
+
+	<select id="selectPower1" resultType="Power">
+		select * from power limit 7
+	</select>
+
+	<select id="selectPowerNewInfo" resultType="java.lang.Integer">
+		SELECT id FROM POWER
+		ORDER BY id DESC LIMIT 1
+	</select>
+
+	<select id="selectPower" parameterType="java.lang.String"
+		resultType="Power">
+		select * from power where regionid=#{regionid}
+	</select>
+
+	<select id="selectRegionAdministration" resultType="RegionAdministration">
+		select * from
+		region_administration
+	</select>
+
+	<select id="selectTowerCrane" resultType="TowerCrane">
+		select * from
+		towercrane
+	</select>
+
+	<select id="selectAllGrouping" resultType="Grouping">
+		select * from grouping
+	</select>
+
+	<select id="selectOneGrouping" parameterType="String"
+		resultType="Grouping">
+		select * from grouping where
+		groupingnumber=#{groupingnumber}
+	</select>
+	
+	<select id="selectOneTowerCrane" parameterType="TowerCrane" resultType="TowerCrane">
+	select * from towercrane where id=#{id}
+	</select>
+	
+	<insert id="insertTowerCrane" parameterType="TowerCrane" >
+	insert into towercrane (towercranename,deviceSN,regionid,floor,belong) values(#{towercranename},#{deviceSN},#{regionid},#{floor},#{belong})
+	</insert>
+	
+	<delete id="deleteTowerCrane" parameterType="TowerCrane">
+	delete from towercrane where id=#{id}
+	</delete>
+	
+	<update id="updateTowerCrane" parameterType="TowerCrane">
+	update towercrane set towercranename=#{towercranename},deviceSN=#{deviceSN},regionid=#{regionid},floor=#{floor},belong=#{belong} where id=#{id}
+	</update>
+	
+	<select id="selectPowerById" parameterType="Integer" resultType="Power">
+	select * from power where power_id=#{power_id}
+	</select>
+	
+	<insert id="insertPower" parameterType="Power">
+	insert into power (power_id,power_name,regionid) values(#{power_id},#{power_name},#{regionid})
+	</insert>
+	
+	<select id="selectAdminissration" resultType="String" parameterType="Integer">
+	select regionname from region_administration where regionid=#{father}
+	</select>
+	
+	<insert id="insertConstructionSite" parameterType="ConstructionSite">
+	insert into construction_site(regionname,regionid,father) values(#{regionname},#{regionid},#{father})
+	</insert>
+	
+	<select id="selectConstructionSite" parameterType="Integer" resultType="ConstructionSite">
+	select * from construction_site where c_id=#{c_id}
+	</select>
+	
+	<update id="updateConstructionSite" parameterType="ConstructionSite">
+	update construction_site set regionname=#{regionname},regionid=#{regionid},father=#{father} where c_id=#{c_id}
+	</update>
+	
+	<delete id="deleteConstructionSite" parameterType="Integer">
+	delete from construction_site where c_id=#{c_id}
+	</delete>
 </mapper>

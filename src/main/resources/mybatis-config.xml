@@ -14,10 +14,13 @@
 		<typeAlias type="com.dajingzhu.bean.Safety_hat" alias="Safety_hat" />
 		<typeAlias type="com.dajingzhu.bean.User" alias="User" />
 		<typeAlias type="com.dajingzhu.bean.Logindate" alias="Logindate" />
-		<typeAlias type="com.dajingzhu.bean.Construction_site" alias="Construction_site" />
-		
-			<typeAlias type="com.dajingzhu.bean.Video_monitor" alias="Video_monitor" />
-	
+		<typeAlias type="com.dajingzhu.bean.ConstructionSite" alias="ConstructionSite" />
+		<typeAlias type="com.dajingzhu.bean.Video_monitor" alias="Video_monitor" />
+		<typeAlias type="com.dajingzhu.bean.Workman" alias="Workman" />
+		<typeAlias type="com.dajingzhu.bean.Power" alias="Power" />
+		<typeAlias type="com.dajingzhu.bean.RegionAdministration" alias="RegionAdministration" />
+		<typeAlias type="com.dajingzhu.bean.TowerCrane" alias="TowerCrane" />
+		<typeAlias type="com.dajingzhu.bean.Grouping" alias="Grouping" />
 	</typeAliases>
 
 </configuration>

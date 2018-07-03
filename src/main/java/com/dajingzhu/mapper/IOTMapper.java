@@ -5,14 +5,19 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.dajingzhu.bean.Construction_site;
+import com.dajingzhu.bean.ConstructionSite;
 import com.dajingzhu.bean.Environmental_monitoring;
 import com.dajingzhu.bean.Equipment;
+import com.dajingzhu.bean.Grouping;
 import com.dajingzhu.bean.Location;
 import com.dajingzhu.bean.Logindate;
+import com.dajingzhu.bean.Power;
+import com.dajingzhu.bean.RegionAdministration;
 import com.dajingzhu.bean.Safety_hat;
+import com.dajingzhu.bean.TowerCrane;
 import com.dajingzhu.bean.User;
 import com.dajingzhu.bean.Video_monitor;
+import com.dajingzhu.bean.Workman;
 import com.dajingzhu.bean.vo.PageBean;
 
 @Repository
@@ -73,7 +78,7 @@ public interface IOTMapper {
 
 	List<Location> findLocation(PageBean<Location> pageBean1);
 
-	List<Construction_site> selectConstruction_site();
+	List<ConstructionSite> selectConstruction_site();
 
 	User selectOneUser(User user);
 
@@ -89,9 +94,49 @@ public interface IOTMapper {
 
 	Video_monitor selectOneVideo_monitor(Video_monitor video_monitor);
 
-	Construction_site selectOneConstruction_site(@Param(value="c_id") int c_id);
+	ConstructionSite selectOneConstruction_site(@Param(value="regionid") String regionid);
 
 	void updateVideo_monitor(Video_monitor video_monitor);
+
+	List<Workman> selectWorkman();
+
+	String selectOneWorkman(int workman_id);
+
+	List<Power> selectPower1();
+
+	int selectPowerNewInfo();
+
+	Power selectPower(@Param(value="regionid")String regionid);
+
+	List<RegionAdministration> selectRegionAdministration();
+
+	List<TowerCrane> selectTowerCrane();
+
+	List<Grouping> selectAllGrouping();
+
+	Grouping selectOneGrouping(@Param(value="groupingnumber")String groupingnumber);
+
+	TowerCrane selectOneTowerCrane(TowerCrane towercran);
+
+	void insertTowerCrane(TowerCrane towercrane);
+
+	void deleteTowerCrane(TowerCrane towercrane);
+
+	void updateTowerCrane(TowerCrane towercrane);
+
+	Power selectPowerById(@Param("power_id")int power_id);
+
+	void insertPower(Power power3);
+
+	String selectAdminissration(@Param("father")int father);
+
+	void insertConstructionSite(ConstructionSite constructionsite);
+
+	ConstructionSite selectConstructionSite(@Param("c_id")int c_id);
+
+	void updateConstructionSite(ConstructionSite constructionsite);
+
+	void deleteConstructionSite(@Param("c_id")int c_id);
 
 
 

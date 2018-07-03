@@ -12,12 +12,41 @@ public class Safety_hat implements Serializable {
 	private int hat_number;
 	private String hat_name;
 	private String  belong;
-	private int c_id;
-	public int getC_id() {
-		return c_id;
+	private String regionid;
+	private int workman_id;
+	private String workman_name;
+	private String groupingnumber;
+    private String groupingname;
+    
+	public String getGroupingnumber() {
+		return groupingnumber;
 	}
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
+	public void setGroupingnumber(String groupingnumber) {
+		this.groupingnumber = groupingnumber;
+	}
+	public String getGroupingname() {
+		return groupingname;
+	}
+	public void setGroupingname(String groupingname) {
+		this.groupingname = groupingname;
+	}
+	public String getWorkman_name() {
+		return workman_name;
+	}
+	public void setWorkman_name(String workman_name) {
+		this.workman_name = workman_name;
+	}
+	public int getWorkman_id() {
+		return workman_id;
+	}
+	public void setWorkman_id(int workman_id) {
+		this.workman_id = workman_id;
+	}
+	public String getRegionid() {
+		return regionid;
+	}
+	public void setRegionid(String regionid) {
+		this.regionid = regionid;
 	}
 	public int getHat_id() {
 		return hat_id;

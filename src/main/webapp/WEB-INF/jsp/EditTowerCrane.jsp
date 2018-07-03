@@ -27,31 +27,31 @@
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="#">智慧工地</a>
-					<div class="nav-collapse collapse">
-				<c:choose>
-				<c:when test="${userSession == null }">
-						<ul class="nav pull-right">
-						<li class="dropdown"><a href="${pageContext.request.contextPath }/user/tologin" role="button">
-						 未登录</a>
-						 </li>
-						 </ul>
-				</c:when>
-				<c:otherwise>
-					<ul class="nav pull-right">
-						<li class="dropdown"><a href="#" role="button"
-							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="icon-user"></i>个人<i class="caret"></i>
+				<div class="nav-collapse collapse">
+					<c:choose>
+						<c:when test="${userSession == null }">
+							<ul class="nav pull-right">
+								<li class="dropdown"><a
+									href="${pageContext.request.contextPath }/user/tologin"
+									role="button"> 未登录</a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul class="nav pull-right">
+								<li class="dropdown"><a href="#" role="button"
+									class="dropdown-toggle" data-toggle="dropdown"> <i
+										class="icon-user"></i>个人<i class="caret"></i>
 
-						</a>
-							<ul class="dropdown-menu">
-								<li><a tabindex="-1"
-									href="${pageContext.request.contextPath }/user/touserinformation">个人资料</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1"
-									href="${pageContext.request.contextPath }/user/tologin">退出</a></li>
-							</ul></li>
-					</ul>
-					</c:otherwise>
+								</a>
+									<ul class="dropdown-menu">
+										<li><a tabindex="-1"
+											href="${pageContext.request.contextPath }/user/touserinformation">个人资料</a></li>
+										<li class="divider"></li>
+										<li><a tabindex="-1"
+											href="${pageContext.request.contextPath }/user/tologin">退出</a></li>
+									</ul></li>
+							</ul>
+						</c:otherwise>
 					</c:choose>
 					<!-- <ul class="nav">
                             <li class="active">
@@ -147,44 +147,44 @@
 							class="icon-chevron-right"></i> 首页</a></li>
 					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">安全帽定位<span class="caret" ></span></a>
+						data-toggle="dropdown">安全帽定位<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-						href="${pageContext.request.contextPath }/user/toSafetyHelmetData"><i
-							class="icon-chevron-right"></i> 安全帽定位数据</a></li>
-						<li><a
-						href="${pageContext.request.contextPath }/user/toSafetyHat"><i
-							class="icon-chevron-right"></i> 安全帽设备</a></li>
+								href="${pageContext.request.contextPath }/user/toSafetyHelmetData"><i
+									class="icon-chevron-right"></i> 安全帽定位数据</a></li>
+							<li><a
+								href="${pageContext.request.contextPath }/user/toSafetyHat"><i
+									class="icon-chevron-right"></i> 安全帽设备</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">环境监控<span class="caret" ></span></a>
+						data-toggle="dropdown">环境监控<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-						href="${pageContext.request.contextPath }/user/toenvironment"><i
-							class="icon-chevron-right"></i> 环境监控数据</a></li>
+								href="${pageContext.request.contextPath }/user/toenvironment"><i
+									class="icon-chevron-right"></i> 环境监控数据</a></li>
 							<li><a
-						href="${pageContext.request.contextPath }/user/toequipment"><i
-							class="icon-chevron-right"></i> 环境监控设备</a></li>
+								href="${pageContext.request.contextPath }/user/toequipment"><i
+									class="icon-chevron-right"></i> 环境监控设备</a></li>
 						</ul>
 					</li>
-						<li class="dropdown">
+					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">视频监控<span class="caret" ></span></a>
+						data-toggle="dropdown">视频监控<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-						href="${pageContext.request.contextPath }/user/tovideo_monitor"><i
-							class="icon-chevron-right"></i> 视频监控设备</a></li>
+								href="${pageContext.request.contextPath }/user/tovideo_monitor"><i
+									class="icon-chevron-right"></i> 视频监控设备</a></li>
 						</ul>
 					</li>
-						<li class="dropdown">
+					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">塔机<span class="caret" ></span></a>
+						data-toggle="dropdown">塔机<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-						href="${pageContext.request.contextPath }/user/toTowerCrane"><i
-							class="icon-chevron-right"></i> 塔机设备</a></li>
+								href="${pageContext.request.contextPath }/user/toTowerCrane"><i
+									class="icon-chevron-right"></i> 塔机设备</a></li>
 						</ul>
 					</li>
 						<li class="dropdown">
@@ -196,7 +196,7 @@
 							class="icon-chevron-right"></i>工地管理</a></li>
 						</ul>
 					</li>
-					<li><a 
+					<li><a
 						href="${pageContext.request.contextPath }/user/toLogindate"><span
 							class="badge badge-warning pull-right">${countlogindate}</span>登录日志</a></li>
 				</ul>
@@ -216,9 +216,9 @@
 									href="${pageContext.request.contextPath }/user/toindex">首页</a>
 									<span class="divider">/</span></li>
 								<li><a
-									href="${pageContext.request.contextPath }/user/toSafetyHat">安全帽设备</a>
+									href="${pageContext.request.contextPath }/user/toTowerCrane">塔机设备</a>
 									<span class="divider">/</span></li>
-								<li><a href="#">修改安全帽设备</a> <span class="divider">/</span>
+								<li><a href="#">修改塔机设备</a> <span class="divider">/</span>
 								</li>
 							</ul>
 						</div>
@@ -232,17 +232,17 @@
 					<div class="block-content collapse in">
 						<div class="span12">
 							<form class="form-horizontal"
-								action="${pageContext.request.contextPath }/user/toupdateSafetyHat"
+								action="${pageContext.request.contextPath }/user/toupdateTowerCrane"
 								method="post" accept-charset="UTF-8" onsubmit="return check()">
 								<fieldset>
-									<legend>修改安全帽</legend>
+									<legend>修改塔机</legend>
 									<div class="control-group">
 										<label class="control-label" for="focusedInput"
-											style="text-align: center;">安全帽编号</label>
+											style="text-align: center;">设备编号</label>
 										<div class="controls">
-											<input class="input-xlarge focused" name="hat_number"
-												id="hat_number" type="text"
-												value="${safety_hatSession.hat_number }"> <span
+											<input class="input-xlarge focused" name="deviceSN"
+												id="deviceSN" type="text"
+												value="${towerCraneSession.deviceSN }"> <span
 												class="help-inline">*</span> <span id="checktext1"></span>
 										</div>
 									</div>
@@ -250,16 +250,16 @@
 										<label class="control-label" for="focusedInput"
 											style="text-align: center;">设备id</label>
 										<div class="controls">
-											<input class="input-xlarge focused" name="hat_id" id="hat_id"
-												type="text" value="${safety_hatSession.hat_id}"
+											<input class="input-xlarge focused" name="id" id="id"
+												type="text" value="${towerCraneSession.id}"
 												readonly="readonly"> <span class="help-inline">*</span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="inputError">安全帽名称</label>
+										<label class="control-label" for="inputError">设备名称</label>
 										<div class="controls">
-											<input type="text" name="hat_name" id="hat_name"
-												value="${safety_hatSession.hat_name }"> <span
+											<input type="text" name="towercranename" id="towercranename"
+												value="${towerCraneSession.towercranename }"> <span
 												class="help-inline">-</span>
 										</div>
 									</div>
@@ -267,8 +267,9 @@
 										<label class="control-label" for="selectError">设备所属工地</label>
 										<div class="controls">
 											<select name="regionid">
-											<option selected="selected" value="${safety_hatSession.regionid}">${safety_hatSession.belong}</option>
-												<c:forEach items="${construction_siteSession }"
+												<option selected="selected"
+													value="${towerCraneSession.regionid}">${towerCraneSession.belong}</option>
+												<c:forEach items="${listConstructionSite}"
 													var="construction_site">
 													<option value="${construction_site.regionid}">${construction_site.regionname}</option>
 												</c:forEach>
@@ -276,26 +277,14 @@
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="selectError">设备所属工组</label>
+										<label class="control-label" for="selectError">设备所属楼</label>
 										<div class="controls">
-											<select name="groupingnumber">
-											<option selected="selected" value="${safety_hatSession.groupingnumber}">${safety_hatSession.groupingname}</option>
-												<c:forEach items="${listGroupingSession }"
-													var="grouping">
-													<option value="${grouping.groupingnumber}">${grouping.groupingname}</option>
-												</c:forEach>
-											</select>
-										</div>
-									</div>
-										<div class="control-group success">
-										<label class="control-label" for="selectError">安全帽所属工人</label>
-										<div class="controls">
-											<select name="workman_id">
-											<option selected="selected" value="${safety_hatSession.workman_id}">${safety_hatSession.workman_name}</option>
-												<c:forEach items="${listWorkmanSession }"
-													var="workman">
+											<select name="floor">
+												<option selected="selected"
+													value="${towerCraneSession.floor}">${towerCraneSession.floor}</option>
+												<%-- <c:forEach items="${listWorkmanSession }" var="workman">
 													<option value="${workman.workman_id}">${workman.workman_name}</option>
-												</c:forEach>
+												</c:forEach> --%>
 											</select>
 										</div>
 									</div>
@@ -362,13 +351,13 @@
 			var reg = /^\d+$/;
 			var check = false;
 			var flag = null;
-			var hat_number = document.getElementById("hat_number").value;
-			if (hat_number == "" || hat_number == null) {
+			var deviceSN = document.getElementById("deviceSN").value;
+			if (deviceSN == "" || deviceSN == null) {
 				document.getElementById("checktext1").innerHTML = "设备编号不能为空 ";
 				check = false;
 
 			} else {
-				flag = reg.test(hat_number);
+				flag = reg.test(deviceSN);
 				if (!flag) {
 					document.getElementById("checktext1").innerHTML = "设备编号只能为数字";
 					check = false;

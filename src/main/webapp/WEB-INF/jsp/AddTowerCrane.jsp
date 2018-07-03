@@ -17,55 +17,6 @@
 	rel="stylesheet" media="screen">
 <script
 	src="${pageContext.request.contextPath }/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="${pageContext.request.contextPath }/js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		//ajax实现二级联动
-		$.post(
-						"${pageContext.request.contextPath }/user/getpower1.action",
-						function(data) {
-							if (data) {
-								var power_id = "";
-								for (var i = 0; i < data.length; i++) {
-									power_id += "<option  value='" + data[i].power_id + "'>"
-											+ data[i].power_name + "</option>";
-								}
-								$("#power_id").append(power_id);
-							}
-							//选中一级触发函数,异步获取二级
-							$("#power_id")
-									.change(
-											function() {
-												var power_id = $(
-														"#power_id option:selected")
-														.val();//获取下拉列表中的选中项
-												$("#regionid > option:gt(0)")
-														.each(
-																function() {//避免option累加
-																	$("#regionid")
-																			.empty();
-																});
-												$
-														.post(
-																"${pageContext.request.contextPath }/user/getpower2.action",
-																{
-																	power_id : power_id
-																},
-																function(data,
-																		status) {
-																	var profession = "";
-																	for (var i = 0; i < data.length; i++) {
-																		profession += "<option value='" + data[i].regionid + "'>"
-																				+ data[i].regionname
-																				+ "</option>";
-																	}
-																	$("#regionid")
-																			.append(profession);
-																});
-											});
-						});
-	});
-</script>
 </head>
 
 <body>
@@ -110,41 +61,41 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span2" id="sidebar">
-				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+					<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li class="active"><a
 						href="${pageContext.request.contextPath }/user/toindex"><i
 							class="icon-chevron-right"></i> 首页</a></li>
 					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">安全帽定位<span class="caret"></span></a>
+						data-toggle="dropdown">安全帽定位<span class="caret" ></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="${pageContext.request.contextPath }/user/toSafetyHelmetData"><i
-									class="icon-chevron-right"></i> 安全帽定位数据</a></li>
-							<li><a
-								href="${pageContext.request.contextPath }/user/toSafetyHat"><i
-									class="icon-chevron-right"></i> 安全帽设备</a></li>
+						href="${pageContext.request.contextPath }/user/toSafetyHelmetData"><i
+							class="icon-chevron-right"></i> 安全帽定位数据</a></li>
+						<li><a
+						href="${pageContext.request.contextPath }/user/toSafetyHat"><i
+							class="icon-chevron-right"></i> 安全帽设备</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">环境监控<span class="caret"></span></a>
+						data-toggle="dropdown">环境监控<span class="caret" ></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="${pageContext.request.contextPath }/user/toenvironment"><i
-									class="icon-chevron-right"></i> 环境监控数据</a></li>
+						href="${pageContext.request.contextPath }/user/toenvironment"><i
+							class="icon-chevron-right"></i> 环境监控数据</a></li>
 							<li><a
-								href="${pageContext.request.contextPath }/user/toequipment"><i
-									class="icon-chevron-right"></i> 环境监控设备</a></li>
+						href="${pageContext.request.contextPath }/user/toequipment"><i
+							class="icon-chevron-right"></i> 环境监控设备</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
+						<li class="dropdown">
 						<!-- span标签 是添加一个下三角的图标 --> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">视频监控<span class="caret"></span></a>
+						data-toggle="dropdown">视频监控<span class="caret" ></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="${pageContext.request.contextPath }/user/tovideo_monitor"><i
-									class="icon-chevron-right"></i> 视频监控设备</a></li>
+						href="${pageContext.request.contextPath }/user/tovideo_monitor"><i
+							class="icon-chevron-right"></i> 视频监控设备</a></li>
 						</ul>
 					</li>
 						<li class="dropdown">
@@ -165,7 +116,7 @@
 							class="icon-chevron-right"></i>工地管理</a></li>
 						</ul>
 					</li>
-					<li><a
+					<li><a 
 						href="${pageContext.request.contextPath }/user/toLogindate"><span
 							class="badge badge-warning pull-right">${countlogindate}</span>登录日志</a></li>
 				</ul>
@@ -184,8 +135,11 @@
 								<li><a
 									href="${pageContext.request.contextPath }/user/toindex">首页</a>
 									<span class="divider">/</span></li>
-								<li><a href="#">添加用户</a> <span class="divider">/</span></li>
-
+								<li><a
+									href="${pageContext.request.contextPath }/user/toTowerCrane"">塔机设备</a>
+									<span class="divider">/</span></li>
+								<li><a href="#">添加塔机</a> <span class="divider">/</span>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -193,91 +147,47 @@
 				<!-- block -->
 				<div class="block">
 					<div class="navbar navbar-inner block-header">
-						<div class="muted pull-left">用户数据</div>
+						<div class="muted pull-left">添加设备</div>
 					</div>
 					<div class="block-content collapse in">
 						<div class="span12">
 							<form class="form-horizontal"
-								action="${pageContext.request.contextPath }/user/toinsertUser"
+								action="${pageContext.request.contextPath }/user/toinsertTowerCrane"
 								method="post" accept-charset="UTF-8" onsubmit="return check()">
 								<fieldset>
-									<legend>个人信息</legend>
+									<legend>添加塔机数据</legend>
+									
 									<div class="control-group success">
-										<label class="control-label" for="inputError">用户名：</label>
+										<label class="control-label" for="inputError">塔机编号</label>
 										<div class="controls">
-											<input class="input-xlarge focused" name="username"
-												id="username" type="text"> <span class="help-inline">*</span>
+											<input type="text" name="deviceSN" id="deviceSN">
+											<span class="help-inline">-</span>
 											<span id="checktext1"></span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="inputError">用户密码：</label>
+										<label class="control-label" for="inputError">塔机名称</label>
 										<div class="controls">
-											<input type="text" name="userpassword" id="userpassword">
-											<span class="help-inline">-</span> <span id="checktext2"></span>
+											<input type="text" name="towercranename" >
+											<span class="help-inline">-</span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="inputError">用户邮箱：</label>
+										<label class="control-label" for="inputError">塔机所属楼</label>
 										<div class="controls">
-											<input type="text" name="email" id="email"> <span
-												class="help-inline">-</span>
+											<input type="text" name="floor" >
+											<span class="help-inline">-</span>
 										</div>
 									</div>
 									<div class="control-group success">
-										<label class="control-label" for="selectError">用户性别：</label>
+										<label class="control-label" for="selectError">塔机所属工地</label>
 										<div class="controls">
-											<select name="sex" id="sex">
-												<option value="1">男
-												</option>
-												<option value="0">女</option>
+											<select name="regionid">
+												<c:forEach items="${listConstructionSite }"
+													var="construction_site">
+													<option value="${construction_site.regionid}">${construction_site.regionname}</option>
+												</c:forEach>
 											</select>
-										</div>
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="inputError">用户地址：</label>
-										<div class="controls">
-											<input type="text" name="address" id="address"> <span
-												class="help-inline">-</span>
-										</div>
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="selectError">用户权限：</label>
-										<div class="controls">
-											<select class="form-control" id="power_id" name="power_id">
-														<option>----请选择级别----</option>
-													</select>
-										<%-- 	<select name="power_id" id="power_id">
-												<option selected="selected">7</option>
-												<c:if test="${userSession.power_id<=6 }">
-													<c:if test="${userSession.power_id<=5 }">
-														<c:if test="${userSession.power_id<=4 }">
-															<c:if test="${userSession.power_id<=3 }">
-																<c:if test="${userSession.power_id<=2 }">
-																	<c:if test="${userSession.power_id==1 }">
-																		<option>2</option>
-																	</c:if>
-																	<option>3</option>
-																</c:if>
-																<option>4</option>
-															</c:if>
-															<option>5</option>
-														</c:if>
-														<option>6</option>
-													</c:if>
-													<option>7</option>
-												</c:if>
-											</select> --%>
-										</div>
-
-									</div>
-									<div class="control-group success">
-										<label class="control-label" for="inputError">用户管理：</label>
-										<div class="controls">
-												
-													<select class="form-control" id="regionid" name="regionid">
-														<option>----请选择管理区域----</option>
-													</select>
 										</div>
 									</div>
 									<div class="form-actions">
@@ -337,44 +247,29 @@
 
 	<script src="${pageContext.request.contextPath }/assets/scripts.js"></script>
 
-	<script type="text/javascript">
-		function checkname() {
+
+<script type="text/javascript">
+		function check() {
+			var reg = /^\d+$/;
 			var check = false;
-			var username = document.getElementById("username").value;
-			if (username.length<2||username.length>8) {
-				document.getElementById("checktext1").innerHTML = "  用户名长度必须在2-8个字符之间";
-				check = false;
-			} else {/*
-												doucument.getElementById("checktext1").innerHTML="  √";
-												check=true;
-			 */
-				check = true;
-			}
-			return check;
-		}
-		function checkpswd() {
-			var check = false;
-			var userpassword = document.getElementById("userpassword").value;
-			var reg = /^[0-9a-zA-Z]+$/;
-			if (userpassword == null || userpassword == "") {
-				document.getElementById("checktext2").innerHTML = "  密码不能为空"
+			var flag = null;
+			var deviceSN = document.getElementById("deviceSN").value;
+			if (deviceSN == "" || deviceSN == null) {
+				document.getElementById("checktext1").innerHTML = "设备端口号不能为空 ";
 				check = false;
 			} else {
-				if (!reg.test(userpassword)) {
-					document.getElementById("checktext2").innerHTML = "  密码只能由大小英文字母和数字组成"
+				flag = reg.test(deviceSN);
+				if (!flag) {
+					document.getElementById("checktext1").innerHTML = "设备端口号只能为数字";
 					check = false;
-				}/* else{
-													  			doucument.getElementById("checktext2").innerHTML="  √";		
-													  			
-													  	    } */
-				check = true;
+				} else {
+					document.getElementById("checktext1").innerHTML = " √";
+					check = true;
+				}
 			}
 			return check;
 		}
-		function check() {
-			var check = checkname() && checkpswd();
-			return check;
-		}
-	</script>
+	</script> 
 </body>
+
 </html>
